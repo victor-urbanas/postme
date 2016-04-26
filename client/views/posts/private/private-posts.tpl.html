@@ -1,0 +1,10 @@
+<template name="privatePosts">
+  {{#if currentUser}}
+    <a class="btn btn-primary" name="button" href="/post/create">Create a post</a>
+  {{/if}}
+  <div class="posts-list">
+    {{#each posts}}
+      {{> postPreview}}
+    {{/each}}
+  </div>
+</template>

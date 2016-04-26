@@ -14,12 +14,15 @@ Template.createPost.events({
   'submit .createPost'(e) {
     e.preventDefault();
     const form = e.target;
+    console.log();
     PostService.create({
-      author: UserService.getCurrentUser().getName(),
+      authorId: Meteor.userId(),
+      authorName: UserService.getCurrentUser().getName(),
       title: form.title.value,
+      public: form.public.checked,
       body: form.body.value
     });
-    FlowRouter.go('/posts');
+    FlowRouter.go('/posts/private');
   }
 });
 
