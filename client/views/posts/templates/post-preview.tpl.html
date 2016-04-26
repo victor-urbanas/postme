@@ -2,7 +2,7 @@
   <div class="well container-fluid">
     <h3>{{title}}</h3>
     <p>{{body}}</p>
-    {{#if currentUser}}
+    {{#if equals currentUser._id authorId}}
       <a class="edit-post btn btn-default" href="/post/edit/{{_id}}">Edit post</a>
     {{/if}}
     <p class="pull-right"><strong>Author:</strong> <span>{{authorName}}</span></p>

@@ -17,9 +17,9 @@ class PostService {
       return Posts.find({authorId: id, public: false});
   }
 
-  get(id) {
-    
-    return Posts.findOne({_id: id});
+  getUserPost(userId, postId) {
+
+    return Posts.findOne({_id: postId, authorId: userId});
   }
 
   create(post) {

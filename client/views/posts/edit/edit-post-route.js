@@ -13,7 +13,7 @@ class EditPostRoute {
 Template.editPost.helpers({
   post() {
 
-    return post = PostService.get(FlowRouter.current().params.id);
+    return post = PostService.getUserPost(Meteor.userId(), FlowRouter.current().params.id) || FlowRouter.go('/');
   }
 });
 
