@@ -26,3 +26,10 @@
     {{/each}}
   </div>
 </template>
+<template name='bestPublicPosts'>
+  <div class="posts-list">
+    {{#each posts}}
+      {{> postPreview}}
+    {{/each}}
+  </div>
+</template>

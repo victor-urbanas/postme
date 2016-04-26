@@ -12,13 +12,15 @@ class CreatePostRoute {
 Template.createPost.events({
   'submit .createPost'(e) {
     e.preventDefault();
-    const form = e.target;
+    const form = e.target, user = UserService.getCurrentUser();
     PostService.create({
       authorId: Meteor.userId(),
-      authorName: UserService.getCurrentUser().getName(),
+      authorName: `${user.profile.firstName || ''} ${user.profile.lastName || ''}`.trim() || user.username,
       title: form.title.value,
       public: form.public.checked,
-      body: form.body.value
+      body: form.body.value,
+      rating: 0,
+      voters: []
     });
     FlowRouter.go('/posts/private');
   }

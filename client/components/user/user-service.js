@@ -1,11 +1,8 @@
-import User from './user-model';
-
 class UserService {
 
   getCurrentUser() {
-    !this.user && Meteor.user() && (this.user = new User(Meteor.user()));
 
-    return this.user;
+    return Meteor.user();
   }
 
   updateUser(_id, $set) {

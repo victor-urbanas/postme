@@ -7,6 +7,11 @@ class PostService {
     return Posts.find({public: true});
   }
 
+  getBestPublicPosts() {
+
+    return Posts.find({public: true}, {sort: {rating: -1}});
+  }
+
   getUserPublicPosts(id) {
 
     return Posts.find({authorId: id, public: true});
@@ -26,8 +31,8 @@ class PostService {
     Posts.insert(post);
   }
 
-  update(id, post) {
-    Posts.update({_id: id}, post);
+  update(id, $set) {
+    Posts.update({_id: id}, {$set});
   }
 
   delete(id) {

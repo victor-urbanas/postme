@@ -22,8 +22,6 @@ Template.editPost.events({
     e.preventDefault();
     const form = e.target;
     PostService.update(post._id, {
-      authorId: Meteor.userId(),
-      authorName: UserService.getCurrentUser().getName(),
       title: form.title.value,
       public: form.public.checked,
       body: form.body.value

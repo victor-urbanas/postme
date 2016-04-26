@@ -2,10 +2,21 @@
   <div class="well container-fluid">
     <h3>{{title}}</h3>
     <p>{{body}}</p>
-    {{#if equals currentUser._id authorId}}
-      <a class="edit-post btn btn-default" href="/post/edit/{{_id}}">Edit post</a>
-      <button type="button" class="delete-post btn btn-danger">Delete Post</button>
-    {{/if}}
     <p class="pull-right"><strong>Author:</strong> <span>{{authorName}}</span></p>
+    <div>
+      <span class="post-rating">
+        <strong>Rating: </strong><span class="rating">{{rating}}</span>
+      </span>
+      {{#if equals currentUser._id authorId}}
+        <a class="edit-post btn btn-default" href="/post/edit/{{_id}}">Edit post</a>
+        <button type="button" class="delete-post btn btn-danger">Delete Post</button>
+      {{else}}
+        {{#if currentUser}}
+          {{#unless includes voters currentUser.username}}
+            <button type="button" class="vote-post btn btn-success">Vote</button>
+          {{/unless}}
+        {{/if}}
+      {{/if}}
+    </div>
   </div>
 </template>

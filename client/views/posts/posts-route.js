@@ -20,6 +20,15 @@ Template.posts.events({
     if (this.authorId === UserService.getCurrentUser()._id && confirm('Are you sure you want to delete this post?')) {
       PostService.delete(this._id)
     }
+  },
+  'click .vote-post'() {
+    const user = UserService.getCurrentUser();
+    if (this.authorId !== user._id && !this.voters.includes(user.username)) {
+      this.rating++;
+      this.voters.push(user.username);
+
+      PostService.update(this._id, _.pick(this, ['rating', 'voters']));
+    }
   }
 })
 

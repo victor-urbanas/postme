@@ -9,6 +9,5 @@ import './main.html';
 Accounts.ui.config({
   passwordSignupFields: 'USERNAME_AND_EMAIL',
 });
-Template.registerHelper('equals', function (a, b) {
-    return a === b;
-});
+Template.registerHelper('equals', (a, b) => a === b);
+Template.registerHelper('includes', (arr, item) => arr.includes(item));
