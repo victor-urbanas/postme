@@ -20,7 +20,8 @@ Template.createPost.events({
       public: form.public.checked,
       body: form.body.value,
       rating: 0,
-      voters: []
+      voters: [],
+      comments: []
     });
     FlowRouter.go('/posts/private');
   }

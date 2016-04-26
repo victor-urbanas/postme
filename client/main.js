@@ -3,6 +3,7 @@ import { ReactiveVar } from 'meteor/reactive-var';
 import { Accounts } from 'meteor/accounts-base';
 import UserService from './components/user/user-service';
 import _ from 'lodash';
+import moment from 'moment';
 
 import './main.html';
 
@@ -11,3 +12,4 @@ Accounts.ui.config({
 });
 Template.registerHelper('equals', (a, b) => a === b);
 Template.registerHelper('includes', (arr, item) => arr.includes(item));
+Template.registerHelper('formatDate', date => date && moment(date).format('MM-DD-YYYY HH:mm:ss'));

@@ -5,6 +5,7 @@ import bestPostsRoute from './posts/best-posts-route';
 import privatePostsRoute from './posts/private-posts-route';
 import createPostRoute from './posts/create/create-post-route';
 import editPostRoute from './posts/edit/edit-post-route';
+import viewPostRoute from './posts/view/view-post-route';
 
 BlazeLayout.setRoot('#postme-content-view');
 FlowRouter.route('/profile', profileRoute);
@@ -13,4 +14,5 @@ FlowRouter.route('/posts/private', privatePostsRoute);
 FlowRouter.route('/posts/best', bestPostsRoute);
 FlowRouter.route('/post/create', createPostRoute);
 FlowRouter.route('/post/edit/:id', editPostRoute);
+FlowRouter.route('/post/:id', viewPostRoute);
 FlowRouter.route('/', postsRoute);

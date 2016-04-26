@@ -1,5 +1,5 @@
 <template name="postPreview">
-  <div class="well container-fluid">
+  <div class="well container-fluid post-preview">
     <h3>{{title}}</h3>
     <p>{{body}}</p>
     <p class="pull-right"><strong>Author:</strong> <span>{{authorName}}</span></p>
@@ -17,6 +17,7 @@
           {{/unless}}
         {{/if}}
       {{/if}}
+      <a href="/post/{{_id}}" class="btn btn-default">Read more</a>
     </div>
   </div>
 </template>

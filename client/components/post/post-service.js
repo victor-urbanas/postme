@@ -1,4 +1,5 @@
 import { Posts } from '../../../imports/api/posts';
+import commentService from '../comment/comment-service';
 
 class PostService {
 
@@ -19,7 +20,7 @@ class PostService {
 
   getUserPrivatePosts(id) {
 
-      return Posts.find({authorId: id, public: false});
+    return Posts.find({authorId: id, public: false});
   }
 
   getUserPost(userId, postId) {
@@ -37,6 +38,13 @@ class PostService {
 
   delete(id) {
     Posts.remove({_id: id});
+  }
+
+  get(id) {
+    const post = Posts.findOne({_id: id, $or: [{public: true}, {authorId: Meteor.userId()}]});
+    post && Object.assign(post, {comments: commentService.getPostComments(id)});
+
+    return post;
   }
 }
 

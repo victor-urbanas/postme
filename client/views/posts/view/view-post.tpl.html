@@ -1,0 +1,37 @@
+<template name="viewPost">
+  <div class="well">
+      <h1>{{post.title}}</h1>
+      <p>{{post.body}}</p>
+      <p>Created by <strong>{{post.authorName}}</strong></p>
+  </div>
+  {{> postComments comments=post.comments}}
+  {{#if currentUser}}
+    <form class="commentForm">
+      <h3>Leave your comment</h3>
+      <div class="form-group">
+        <textarea name="body" class="form-control" placeholder="type your comment here"></textarea>
+      </div>
+      <div class="form-group">
+        <input type="submit" name="name" value="Submit" class="btn btn-default">
+      </div>
+    </form>
+  {{/if}}
+</template>
+
+<template name='postComments'>
+  <h4>Comments</h4>
+  <ul>
+    {{#each comments}}
+      <li>
+        <div class="well">
+          <p>{{body}}</p>
+          <p><span>Left by <strong>{{authorName}}</strong>  at {{formatDate createdAt}}</span></p>
+        </div>
+      </li>
+    {{/each}}
+  </ul>
+</template>
+
+<template name="commentForm">
+
+</template>
