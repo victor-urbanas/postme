@@ -1,6 +1,6 @@
 import { Posts } from '../../../imports/api/posts';
 
-class PstService {
+class PostService {
 
   getAll() {
 
@@ -22,4 +22,4 @@ class PstService {
   }
 }
 
-export default new PstService();
+export default new PostService();
