@@ -1,0 +1,18 @@
+{
+  "name": "postme-app",
+  "private": true,
+  "scripts": {
+    "start": "meteor run"
+  },
+  "dependencies": {
+    "btoa": "^1.1.2",
+    "glob": "^7.0.3",
+    "grunt": "^1.0.1",
+    "load-grunt-tasks": "^3.5.0",
+    "lodash": "^4.11.1",
+    "markdown-it": "^6.0.1",
+    "meteor-node-stubs": "^0.2.3",
+    "npm-shrinkwrap": "^200.5.1",
+    "time-grunt": "^1.3.0"
+  }
+}

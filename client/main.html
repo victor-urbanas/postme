@@ -1,0 +1,39 @@
+<head>
+  <title>postme</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+</head>
+
+<body>
+  <ul class="nav nav-tabs">
+    <li role="presentation"><a href="/signup">Sign up</a></li>
+    <li role="presentation"><a href="/signin">Sign In</a></li>
+  </ul>
+  <div class="container" id="postme-content-view">
+
+  </div>
+
+
+  <ul>
+    {{#each users}}
+      <li>{{username}} <button type="button" class="delete-user">Delete a user</button></li>
+    {{/each}}
+  </ul>
+
+  <!-- {{> hello}} -->
+  <!-- {{> info}} -->
+</body>
+
+<!-- <template name="hello">
+  <button>Click Me</button>
+  <p>You've pressed the button {{counter}} times.</p>
+</template> -->
+
+<!--<template name="info">
+  <h2>Learn Meteor!</h2>
+  <ul>
+    <li><a href="https://www.meteor.com/try">Do the Tutorial</a></li>
+    <li><a href="http://guide.meteor.com">Follow the Guide</a></li>
+    <li><a href="https://docs.meteor.com">Read the Docs</a></li>
+    <li><a href="https://forums.meteor.com">Discussions</a></li>
+  </ul>
+</template> -->
