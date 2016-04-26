@@ -7,10 +7,11 @@
   <div class="container-fluid" >
     {{> loginButtons}}
     <ul class="nav nav-pills">
-      <li role="presentation"><a href="/posts/public">Posts</a></li>
+      <li role="presentation"><a href="/">Home</a></li>
       {{#if currentUser}}
         <li role="presentation"><a href="/profile">Profile</a></li>
-        <li role="presentation"><a href="/posts/private">My posts</a></li>
+        <li role="presentation"><a href="/posts/private">My private posts</a></li>
+        <li role="presentation"><a href="/posts/public">My public Posts</a></li>
       {{/if}}
     </ul>
     <div id="postme-content-view">

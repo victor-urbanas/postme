@@ -2,23 +2,32 @@ import { Posts } from '../../../imports/api/posts';
 
 class PostService {
 
-  getAll() {
-
-    return Posts.find({});
-  }
-
-  getPublicPosts() {
+  getAllPublicPosts() {
 
     return Posts.find({public: true});
   }
 
-  getUserPosts(id) {
+  getUserPublicPosts(id) {
 
-      return Posts.find({authorId: id});
+    return Posts.find({authorId: id, public: true});
+  }
+
+  getUserPrivatePosts(id) {
+
+      return Posts.find({authorId: id, public: false});
+  }
+
+  get(id) {
+    
+    return Posts.findOne({_id: id});
   }
 
   create(post) {
     Posts.insert(post);
+  }
+
+  update(id, post) {
+    Posts.update({_id: id}, post);
   }
 }
 

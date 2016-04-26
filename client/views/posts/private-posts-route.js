@@ -4,19 +4,14 @@ import _ from 'lodash';
 
 class PrivatePostsRoute {
   action(params) {
-    if (Meteor.userId()) {
-      BlazeLayout.setRoot('#postme-content-view');
-      BlazeLayout.render('posts');
-    } else {
-      FlowRouter.go('/');
-    }
+    Meteor.userId() ? BlazeLayout.render('posts', { tpl: 'userPrivatePosts' }) : FlowRouter.go('/');
   }
 }
 
-Template.posts.helpers({
+Template.userPrivatePosts.helpers({
   posts() {
 
-    return PostService.getUserPosts(Meteor.userId())
+    return PostService.getUserPrivatePosts(Meteor.userId())
   },
 });
 

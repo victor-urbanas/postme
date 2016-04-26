@@ -1,7 +1,25 @@
-<template name="posts">
+<template  name="posts">
   {{#if currentUser}}
     <a class="btn btn-primary" name="button" href="/post/create">Create a post</a>
   {{/if}}
+  {{> Template.dynamic template=tpl}}
+</template>
+
+<template name='userPublicPosts'>
+  <div class="posts-list">
+    {{#each posts}}
+      {{> postPreview}}
+    {{/each}}
+  </div>
+</template>
+<template name='userPrivatePosts'>
+  <div class="posts-list">
+    {{#each posts}}
+      {{> postPreview}}
+    {{/each}}
+  </div>
+</template>
+<template name='allPublicPosts'>
   <div class="posts-list">
     {{#each posts}}
       {{> postPreview}}

@@ -1,19 +1,27 @@
-import './create-post.tpl.html';
+import './edit-post.tpl.html';
 import PostService from '../../../components/post/post-service';
 import UserService from '../../../components/user/user-service';
 import _ from 'lodash';
+let post;
 
-class CreatePostRoute {
+class EditPostRoute {
   action(params) {
-    Meteor.userId() ? BlazeLayout.render('createPost') : FlowRouter.go('/');
+    Meteor.userId() ? BlazeLayout.render('editPost') : FlowRouter.go('/');
   }
 }
 
-Template.createPost.events({
-  'submit .createPost'(e) {
+Template.editPost.helpers({
+  post() {
+
+    return post = PostService.get(FlowRouter.current().params.id);
+  }
+});
+
+Template.editPost.events({
+  'submit .editPost'(e) {
     e.preventDefault();
     const form = e.target;
-    PostService.create({
+    PostService.update(post._id, {
       authorId: Meteor.userId(),
       authorName: UserService.getCurrentUser().getName(),
       title: form.title.value,
@@ -24,4 +32,4 @@ Template.createPost.events({
   }
 });
 
-export default new CreatePostRoute();
+export default new EditPostRoute();

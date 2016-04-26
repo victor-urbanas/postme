@@ -4,15 +4,14 @@ import _ from 'lodash';
 
 class PostsRoute {
   action(params) {
-    BlazeLayout.setRoot('#postme-content-view');
-    BlazeLayout.render('posts');
+      BlazeLayout.render('posts', { tpl: 'allPublicPosts' });
   }
 }
 
-Template.posts.helpers({
+Template.allPublicPosts.helpers({
   posts() {
 
-    return PostService.getPublicPosts()
+    return PostService.getAllPublicPosts()
   },
 });
 

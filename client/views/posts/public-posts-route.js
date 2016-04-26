@@ -3,15 +3,14 @@ import _ from 'lodash';
 
 class PublicPostsRoute {
   action(params) {
-    BlazeLayout.setRoot('#postme-content-view');
-    BlazeLayout.render('posts');
+    Meteor.userId() ? BlazeLayout.render('posts', { tpl: 'userPublicPosts' }) : FlowRouter.go('/');
   }
 }
 
-Template.posts.helpers({
+Template.userPublicPosts.helpers({
   posts() {
-
-    return PostService.getPublicPosts()
+    
+    return PostService.getUserPublicPosts(Meteor.userId())
   },
 });
 
