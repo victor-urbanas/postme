@@ -1,22 +1,15 @@
-import { Users } from '../../../imports/api/users';
+import User from './user-model';
 
 class UserService {
-  getAll() {
 
-    return Users.find({});
+  getCurrentUser() {
+    !this.user && Meteor.user() && (this.user = new User(Meteor.user()));
+
+    return this.user;
   }
 
-  save(user) {
-    Users.insert(user);
-  }
-
-  get(login) {
-
-    return Users.findOne({email: login}) || Users.findOne({username: login});
-  }
-
-  delete(id) {
-      Users.remove(id);
+  updateUser(_id, $set) {
+    Meteor.users.update({_id}, {$set});
   }
 }
 

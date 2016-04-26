@@ -4,24 +4,21 @@
 </head>
 
 <body>
-  <ul class="nav nav-tabs">
-    <li role="presentation"><a href="/signup">Sign up</a></li>
-    <li role="presentation"><a href="/signin">Sign In</a></li>
-  </ul>
-  <div class="container" id="postme-content-view">
-
+  <div class="container-fluid" >
+    {{> loginButtons}}
+    <ul class="nav nav-pills">
+      <li role="presentation"><a href="/profile">Profile</a></li>
+      <li role="presentation"><a href="/posts">Posts</a></li>
+    </ul>
+    <div id="postme-content-view">
+    </div>
   </div>
-
-
-  <ul>
-    {{#each users}}
-      <li>{{username}} <button type="button" class="delete-user">Delete a user</button></li>
-    {{/each}}
-  </ul>
 
   <!-- {{> hello}} -->
   <!-- {{> info}} -->
 </body>
+<template name='auth'>
+</template>
 
 <!-- <template name="hello">
   <button>Click Me</button>

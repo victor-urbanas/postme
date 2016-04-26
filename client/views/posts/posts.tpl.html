@@ -1,0 +1,16 @@
+<template name="post">
+  <a class="btn btn-primary" name="button" href="/post/create">Create a post</a>
+  <div class="posts-list">
+    {{#each posts}}
+      {{> postPreview}}
+    {{/each}}
+  </div>
+</template>
+
+<template name="postPreview">
+  <div class="well">
+    <h3>{{title}}</h3>
+    <p>{{body}}</p>
+    <p class="pull-right"><strong>Author:</strong> <span>{{author}}</span></p>
+  </div>
+</template>

@@ -1,1 +1,8 @@
 /* CSS declarations go here */
+textarea {
+  min-height: 200px;
+}
+
+.posts-list {
+  margin: 20px 0;
+}

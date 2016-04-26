@@ -1,3 +1,21 @@
 <template name="profile">
-  <h1>User's profile</h1>
+  <h1>{{user.username}}</h1>
+  <p><strong>first name:</strong> {{user.profile.firstName}}</p>
+  <p><strong>last name:</strong> {{user.profile.lastName}}</p>
+  <!-- <p><strong>Emails:</strong></p>
+  <ul>
+    {{#each user.emails}}
+      <li><p>{{address}}</p></li>
+    {{/each}}
+  </ul> -->
+
+  <form class='userForm'>
+    <div class="form-group">
+      <input type="text" name="firstName" class="form-control" placeholder="first name">
+    </div>
+    <div class="form-group">
+      <input type="text" name="lastName" class="form-control" placeholder="last name">
+    </div>
+    <input type="submit" name="name" value="submit" class="btn btn-default">
+  </form>
 </template>
