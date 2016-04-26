@@ -3,7 +3,6 @@ export default class User {
     Object.assign(this, data);
   }
   getName() {
-
-    return `${this.firstName || ''} ${this.lastName || ''}`.trim() || this.username;
+    return `${this.profile.firstName || ''} ${this.profile.lastName || ''}`.trim() || this.username;
   }
 }

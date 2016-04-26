@@ -1,8 +1,6 @@
 <template name="profile">
-  <h1>{{user.username}}</h1>
-  <p><strong>first name:</strong> {{user.profile.firstName}}</p>
-  <p><strong>last name:</strong> {{user.profile.lastName}}</p>
-
+  <h1>Hello, {{user.username}}</h1>
+  <h3>Edit your profile</h3>
   <form class='userForm'>
     <div class="form-group">
       <input type="text" name="firstName" class="form-control" placeholder="first name" value="{{user.profile.firstName}}">

@@ -29,6 +29,10 @@ class PostService {
   update(id, post) {
     Posts.update({_id: id}, post);
   }
+
+  delete(id) {
+    Posts.remove({_id: id});
+  }
 }
 
 export default new PostService();

@@ -4,6 +4,7 @@
     <p>{{body}}</p>
     {{#if equals currentUser._id authorId}}
       <a class="edit-post btn btn-default" href="/post/edit/{{_id}}">Edit post</a>
+      <button type="button" class="delete-post btn btn-danger">Delete Post</button>
     {{/if}}
     <p class="pull-right"><strong>Author:</strong> <span>{{authorName}}</span></p>
   </div>
