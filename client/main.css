@@ -6,7 +6,3 @@ textarea {
 .posts-list {
   margin: 20px 0;
 }
-.post-preview > a, .post-preview > a:hover {
-  text-decoration: none;
-  color: #000;
-}

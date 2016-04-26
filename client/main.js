@@ -13,3 +13,8 @@ Accounts.ui.config({
 Template.registerHelper('equals', (a, b) => a === b);
 Template.registerHelper('includes', (arr, item) => arr.includes(item));
 Template.registerHelper('formatDate', date => date && moment(date).format('MM-DD-YYYY HH:mm:ss'));
+
+Meteor.startup(function() {
+  Hooks.init();
+});
+Hooks.onLoggedOut = (userId) => FlowRouter.go('/');
