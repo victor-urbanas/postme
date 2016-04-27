@@ -5,7 +5,7 @@ class PostService {
 
   getAllPublicPosts() {
 
-    return Posts.find({public: true});
+    return Posts.find({public: true}, {sort: {createdAt: -1}});
   }
 
   getBestPublicPosts() {
@@ -15,12 +15,12 @@ class PostService {
 
   getUserPublicPosts(id) {
 
-    return Posts.find({authorId: id, public: true});
+    return Posts.find({authorId: id, public: true}, {sort: {createdAt: -1}});
   }
 
   getUserPrivatePosts(id) {
 
-    return Posts.find({authorId: id, public: false});
+    return Posts.find({authorId: id, public: false}, {sort: {createdAt: -1}});
   }
 
   getUserPost(userId, postId) {

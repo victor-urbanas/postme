@@ -21,7 +21,8 @@ Template.createPost.events({
       body: form.body.value,
       rating: 0,
       voters: [],
-      comments: []
+      comments: [],
+      createdAt: new Date()
     });
     FlowRouter.go('/posts/private');
   }
