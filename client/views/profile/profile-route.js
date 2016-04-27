@@ -22,8 +22,13 @@ Template.profile.events({
 });
 Template.profile.helpers({
   user() {
+    const user = UserService.getCurrentUser();
+    user && (user.avatarUrl = Gravatar.imageUrl(user.emails[0].address, {
+        size: 34,
+        default: 'mm'
+    }));
 
-    return UserService.getCurrentUser()
+    return user;
   },
 });
 
