@@ -1,12 +1,14 @@
 const Comments = new Mongo.Collection('comments');
 
-Meteor.methods({
-  'comments.getPostComments'(postId) {
+if (Meteor.isServer) {
+  Meteor.methods({
+    'comments.getPostComments'(postId) {
 
-    return Comments.find({postId});
-  },
+      return Comments.find({postId});
+    },
 
-  'comments.create'(comment) {
-    Comments.insert(comment);
-  }
-});
+    'comments.create'(comment) {
+      Comments.insert(comment);
+    }
+  });
+}

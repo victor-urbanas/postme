@@ -1,4 +1,5 @@
 export const Posts = new Mongo.Collection('posts');
+
 if (Meteor.isServer) {
   Meteor.methods({
     'posts.getAllPublicPosts'() {
