@@ -1,7 +1,4 @@
 import './create-post.tpl.html';
-import PostService from '../../../components/post/post-service';
-import UserService from '../../../components/user/user-service';
-import _ from 'lodash';
 
 class CreatePostRoute {
   action(params) {
@@ -12,10 +9,10 @@ class CreatePostRoute {
 Template.createPost.events({
   'submit .createPost'(e) {
     e.preventDefault();
-    const form = e.target, user = UserService.getCurrentUser();
-    PostService.create({
+    const form = e.target, user = Meteor.user();
+    Meteor.call('posts.create', {
       authorId: Meteor.userId(),
-      authorName: `${user.profile.firstName || ''} ${user.profile.lastName || ''}`.trim() || user.username,
+      authorName: (user.profile && `${user.profile.firstName || ''} ${user.profile.lastName || ''}`.trim()) || user.username,
       title: form.title.value,
       public: form.public.checked,
       body: form.body.value,

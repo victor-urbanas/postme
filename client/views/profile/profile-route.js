@@ -1,5 +1,4 @@
 import './profile.tpl.html';
-import UserService from '../../components/user/user-service';
 import _ from 'lodash';
 
 class ProfileRoute {
@@ -14,7 +13,7 @@ Template.profile.events({
   'submit .userForm'(e) {
     e.preventDefault();
     const form = e.target;
-    UserService.updateUser(Meteor.userId(), {
+    Meteor.call('users.update', Meteor.userId(), {
       'profile.firstName': form.firstName.value,
       'profile.lastName': form.lastName.value
     });
@@ -22,7 +21,7 @@ Template.profile.events({
 });
 Template.profile.helpers({
   user() {
-    const user = UserService.getCurrentUser();
+    const user = Meteor.user();
     user && (user.avatarUrl = Gravatar.imageUrl(user.emails[0].address, {
         size: 34,
         default: 'mm'

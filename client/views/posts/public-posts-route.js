@@ -1,16 +1,24 @@
-import PostService from '../../components/post/post-service';
-import _ from 'lodash';
+import { Session } from 'meteor/session';
 
 class PublicPostsRoute {
   action(params) {
-    Meteor.userId() ? BlazeLayout.render('posts', { tpl: 'userPublicPosts' }) : FlowRouter.go('/');
+    if (Meteor.userId()) {
+      Meteor.call('posts.getUserPublicPosts', Meteor.userId(), (err, posts) => {
+        if (!err) {
+          BlazeLayout.render('posts', { tpl: 'userPublicPosts' });
+          Session.set('userPublicPosts', posts)
+        }
+      })
+    } else {
+      FlowRouter.go('/');
+    }
   }
 }
 
 Template.userPublicPosts.helpers({
   posts() {
-    
-    return PostService.getUserPublicPosts(Meteor.userId())
+
+    return Session.get('userPublicPosts');
   },
 });
 

@@ -1,17 +1,20 @@
-import PostService from '../../components/post/post-service';
-import UserService from '../../components/user/user-service';
-import _ from 'lodash';
+import { Session } from 'meteor/session';
 
 class BestPostsRoute {
   action(params) {
-     BlazeLayout.render('posts', { tpl: 'bestPublicPosts' })
+    Meteor.call('posts.getBestPublicPosts', (err, posts) => {
+      if (!err) {
+        Session.set('bestPublicPosts', posts);
+        BlazeLayout.render('posts', { tpl: 'bestPublicPosts' });
+      }
+    });
   }
 }
 
 Template.bestPublicPosts.helpers({
   posts() {
 
-    return PostService.getBestPublicPosts()
+    return Session.get('bestPublicPosts');
   },
 });
 

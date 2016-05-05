@@ -1,17 +1,24 @@
-import PostService from '../../components/post/post-service';
-import UserService from '../../components/user/user-service';
-import _ from 'lodash';
+import { Session } from 'meteor/session';
 
 class PrivatePostsRoute {
   action(params) {
-    Meteor.userId() ? BlazeLayout.render('posts', { tpl: 'userPrivatePosts' }) : FlowRouter.go('/');
+    if (Meteor.userId()) {
+      BlazeLayout.render('posts', { tpl: 'userPrivatePosts' });
+      Meteor.call('posts.getUserPrivatePosts', Meteor.userId(), (err, posts) => {
+        // TODO handle error
+        !err && Session.set('userPrivatePosts', posts);
+      });
+
+    } else {
+      FlowRouter.go('/');
+    }
   }
 }
 
 Template.userPrivatePosts.helpers({
   posts() {
 
-    return PostService.getUserPrivatePosts(Meteor.userId())
+    return Session.get('userPrivatePosts');
   },
 });
 
